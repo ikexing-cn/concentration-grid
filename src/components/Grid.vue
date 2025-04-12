@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { NGridItem } from "naive-ui";
 import { grid, startKey } from "../constant";
 
 const isDark = useDark();
