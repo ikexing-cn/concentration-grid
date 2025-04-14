@@ -9,8 +9,11 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Grid: typeof import('./src/components/Grid.vue')['default']
+    NBu: typeof import('naive-ui')['NBu']
     NButton: typeof import('naive-ui')['NButton']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
+    NFloatButton: typeof import('naive-ui')['NFloatButton']
+    NFloatButtonGroup: typeof import('naive-ui')['NFloatButtonGroup']
     NGradientText: typeof import('naive-ui')['NGradientText']
     NGrid: typeof import('naive-ui')['NGrid']
     NGridItem: typeof import('naive-ui')['NGridItem']

@@ -8,7 +8,7 @@ import {
   LogoGithub,
 } from "@vicons/carbon";
 
-import { grid, startKey } from "../constant";
+import { grid, startKey, isMobile } from "../constant";
 
 defineEmits<{
   (e: "toggleTheme"): void;
@@ -34,7 +34,7 @@ const { isStart, toggleStart } = inject(startKey)!;
 </script>
 
 <template>
-  <div class="icons">
+  <div class="settings">
     <NButton
       circle
       icon
@@ -79,6 +79,7 @@ const { isStart, toggleStart } = inject(startKey)!;
           :max="10"
           :min="1"
           v-model:value="grid.rows"
+          :show-button="!isMobile"
         />
 
         <NButton dashed type="success">Columns</NButton>
@@ -87,6 +88,7 @@ const { isStart, toggleStart } = inject(startKey)!;
           :max="10"
           :min="1"
           v-model:value="grid.columns"
+          :show-button="!isMobile"
         />
       </NInputGroup>
 
@@ -114,12 +116,14 @@ const { isStart, toggleStart } = inject(startKey)!;
 </template>
 
 <style scoped>
-.icons {
-  position: fixed;
+.settings {
   right: 5%;
   top: 5%;
-  transform: translateY(-50%);
-  gap: 25%;
   display: flex;
+  position: fixed;
+}
+
+.settings button {
+  margin-left: 25px;
 }
 </style>

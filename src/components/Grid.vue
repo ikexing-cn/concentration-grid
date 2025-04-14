@@ -1,8 +1,11 @@
 <script lang="ts" setup>
-import { grid, startKey } from "../constant";
+import { grid, startKey, isMobile } from '../constant';
 
 const isDark = useDark();
 const selectedColor = computed(() => (isDark.value ? "#63E2B7" : "#18A058"));
+const mobileGridArea = computed(() =>
+  isMobile.value && grid.value.columns >= 8 ? "35px" : "50px"
+);
 
 const min = ref(0);
 const max = computed(() => grid.value.columns * grid.value.rows);
@@ -46,7 +49,7 @@ const { toggleStart } = inject(startKey)!;
       ReStart
     </NButton>
 
-    <NGrid responsive="screen" :cols="grid.rows">
+    <NGrid responsive="screen" :item-responsive="true" :cols="grid.rows">
       <NGridItem
         class="grid-item"
         :class="{ selected: min >= value }"
@@ -96,9 +99,9 @@ const { toggleStart } = inject(startKey)!;
 
 @media (max-width: 768px) {
   .grid-item {
-    height: 50px;
-    width: 50px;
     font-size: 18px;
+    height: v-bind(mobileGridArea);
+    width: v-bind(mobileGridArea);
   }
 }
 
